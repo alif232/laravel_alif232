@@ -17,6 +17,7 @@
 
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="shortcut icon" href="{{ asset('logo/logo.png') }}" />
+
 </head>
 
 <body>
@@ -48,18 +49,21 @@
         <div class="container-fluid page-body-wrapper">
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
+
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/rumah-sakit') }}">
+                        <a class="nav-link {{ request()->is('rumah-sakit*') ? 'active' : '' }}"
+                            href="{{ url('/rumah-sakit') }}">
                             <i class="menu-icon mdi mdi-hospital-building"></i>
                             <span class="menu-title">Data Rumah Sakit</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/pasien') }}">
+                        <a class="nav-link {{ request()->is('pasien*') ? 'active' : '' }}" href="{{ url('/pasien') }}">
                             <i class="menu-icon mdi mdi-account-multiple"></i>
                             <span class="menu-title">Data Pasien</span>
                         </a>
                     </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/logout') }}">
                             <i class="mdi mdi-logout menu-icon"></i>

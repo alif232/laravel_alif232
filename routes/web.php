@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RumahSakitController;
+use App\Http\Controllers\PasienController;
 
 Route::get('/', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
@@ -20,4 +21,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/rumah-sakit/{id}/edit', [RumahSakitController::class, 'edit'])->name('rumahsakit.edit');
     Route::put('/rumah-sakit/update/{id}', [RumahSakitController::class, 'update'])->name('rumahsakit.update');
     Route::delete('/rumah-sakit/{id}', [RumahSakitController::class, 'destroy'])->name('rumahsakit.destroy');
+
+    Route::get('/pasien', [PasienController::class, 'index'])->name('pasien.index');
+    Route::get('/pasien/data', [PasienController::class, 'data'])->name('pasien.data');
+    Route::get('/pasien/form', [PasienController::class, 'form'])->name('pasien.form');
+    Route::get('/pasien/{id}/edit', [PasienController::class, 'form'])->name('pasien.edit');
+    Route::post('/pasien/store', [PasienController::class, 'store'])->name('pasien.store');
+    Route::put('/pasien/update/{id}', [PasienController::class, 'update'])->name('pasien.update');
+    Route::delete('/pasien/{id}', [PasienController::class, 'destroy'])->name('pasien.destroy');
 });
